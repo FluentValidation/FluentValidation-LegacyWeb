@@ -79,6 +79,28 @@ namespace FluentValidation.Tests.Mvc5 {
 		}
 
 		[Fact]
+		public void MinLengthValidator_uses_simplified_message_for_clientside_validatation() {
+			validator.RuleFor(x => x.Name).MinimumLength(1);
+			var clientRule = GetClientRule(x => x.Name);
+			clientRule.ErrorMessage.ShouldEqual("'Name' must be more than 1 characters.");
+		}
+
+		[Fact]
+		public void MaxengthValidator_uses_simplified_message_for_clientside_validatation() {
+			validator.RuleFor(x => x.Name).MaximumLength(10);
+			var clientRule = GetClientRule(x => x.Name);
+			clientRule.ErrorMessage.ShouldEqual("'Name' must be less than 10 characters.");
+		}
+
+		[Fact]
+		public void ExactLengthValidator_uses_simplified_message_for_clientside_validatation() {
+			validator.RuleFor(x => x.Name).Length(10);
+			var clientRule = GetClientRule(x => x.Name);
+			clientRule.ErrorMessage.ShouldEqual("'Name' must be 10 characters in length.");
+		}
+
+
+		[Fact]
 		public void InclusiveBetween_validator_uses_simplified_message_for_clientside_validation() {
 			validator.RuleFor(x => x.Id).InclusiveBetween(1, 10);
 			var clientRules = GetClientRules(x => x.Id);
