@@ -6,9 +6,16 @@ This repository contains the legacy/deprecated web project integration component
 - MVC 5
 - WebApi 2
 
-
 [Full Documentation](https://fluentvalidation.net)
 [Main repository](https://github.com/JeremySkinner/FluentValidation)
+
+[![Build Status](https://dev.azure.com/jeremy0621/FluentValidation/_apis/build/status/JeremySkinner.FluentValidation-LegacyWeb?branchName=master)](https://dev.azure.com/jeremy0621/FluentValidation/_build/latest?definitionId=4&branchName=master)
+
+|         |       |       |
+| ------- | ----- | ----- |
+| `FluentValidation.Mvc5` | [![NuGet](https://img.shields.io/nuget/v/FluentValidation.Mvc5.svg)](https://nuget.org/packages/FluentValidation.Mvc5) | [![Nuget](https://img.shields.io/nuget/dt/FluentValidation.Mvc5.svg)](https://nuget.org/packages/FluentValidation.Mvc5)
+| `FluentValidation.WebApi` | [![NuGet](https://img.shields.io/nuget/v/FluentValidation.WebApi.svg)](https://nuget.org/packages/FluentValidation.WebApi) | [![Nuget](https://img.shields.io/nuget/dt/FluentValidation.WebApi.svg)](https://nuget.org/packages/FluentValidation.WebApi)
+
 
 ### License, Copyright etc
 
