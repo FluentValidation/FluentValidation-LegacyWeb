@@ -1,0 +1,27 @@
+strategy:
+  matrix:
+    linux:
+      imageName: 'ubuntu-16.04'
+    windows:
+      imageName: 'windows-2019'
+
+trigger:
+- master
+
+pool:
+  vmImage: $(imageName)
+
+variables:
+- name: DOTNET_SKIP_FIRST_TIME_EXPERIENCE
+  value: 1
+steps:
+- pwsh: ./build.ps1 -t ci
+  displayName: 'Build'
+  env: 
+    kek: $(kek)
+
+- task: PublishTestResults@2
+  inputs:
+    testRunner: VSTest
+    testResultsFiles: '**/*.trx'
+    failTaskOnFailedTests: true

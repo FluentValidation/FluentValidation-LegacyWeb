@@ -7,7 +7,7 @@
     <OutputType>Library</OutputType>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\FluentValidation.Tests\TestExtensions.cs" Link="TestExtensions.cs" />
+    <Compile Include="..\FluentValidation.Tests.Mvc5\TestExtensions.cs" Link="TestExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Update="xunit.runner.json">
@@ -31,9 +31,10 @@
     <PackageReference Include="Microsoft.AspNet.WebPages" Version="3.2.4" />
     <PackageReference Include="Microsoft.Web.Infrastructure" Version="1.0.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="6.0.4" />
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="All" />
+    <PackageReference Include="FluentValidation" Version="[8.6.1,9.0.0)" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FluentValidation\FluentValidation.csproj" />
     <ProjectReference Include="..\FluentValidation.WebApi\FluentValidation.WebApi.csproj" />
   </ItemGroup>
   <ItemGroup>
@@ -54,7 +55,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <NoWarn>1998;0618</NoWarn>
   </PropertyGroup>
-  <Import Project="../netfx.props" />
   <ItemGroup Condition="'$(TargetFramework)'=='net452' AND '$(OS)'=='Unix'">
     <!-- Workarounds for Mono -->
     <Reference Include="System.Runtime" />
