@@ -6,7 +6,7 @@
     <PackageId>FluentValidation.Mvc5</PackageId>
     <Company />
     <Description>ASP.NET MVC 5 integration for FluentValidation</Description>
-    <PackageReleaseNotes>https://github.com/JeremySkinner/FluentValidation/blob/master/Changelog.txt</PackageReleaseNotes>
+    <PackageReleaseNotes>https://github.com/FluentValidation/FluentValidation/blob/master/Changelog.txt</PackageReleaseNotes>
     <!-- Signing is only performed as part of the release build -->
     <SignAssembly Condition="'$(AssemblyOriginatorKeyFile)'!=''">True</SignAssembly>
     <DelaySign>False</DelaySign>
@@ -28,12 +28,10 @@ Changes in 7.5:
 * Better handling of clientside messages when using custom overriden language resources
 * Added flag in the ValidationContext's RootDataContext when a validator is invoked by the automatic MVC/WebApi integration
 
-	Changes in 7.4:
-	* Added SetRulesetForClientsideMessages method as an alternative to using the RulesetForClientSideMessagesAttribute
-	* Updated the MVC5 AddToModelState extension not to overwrite existing attempted values
-
-	Full release notes can be found at https://github.com/JeremySkinner/FluentValidation/blob/master/Changelog.txt
-		</PackageReleaseNotes>
+Changes in 7.4:
+* Added SetRulesetForClientsideMessages method as an alternative to using the RulesetForClientSideMessagesAttribute
+* Updated the MVC5 AddToModelState extension not to overwrite existing attempted values
+      </PackageReleaseNotes>
       <DebugType>embedded</DebugType>
 	</PropertyGroup>
 

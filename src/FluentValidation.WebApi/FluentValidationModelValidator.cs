@@ -1,18 +1,18 @@
 ﻿#region License
-// Copyright (c) Jeremy Skinner (http://www.jeremyskinner.co.uk)
-// 
-// Licensed under the Apache License, Version 2.0 (the "License"); 
-// you may not use this file except in compliance with the License. 
-// You may obtain a copy of the License at 
-// 
-// http://www.apache.org/licenses/LICENSE-2.0 
-// 
-// Unless required by applicable law or agreed to in writing, software 
-// distributed under the License is distributed on an "AS IS" BASIS, 
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
-// See the License for the specific language governing permissions and 
+// Copyright (c) Jeremy Skinner (http://www.jeremyskinner.co.uk) and contributors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
 // limitations under the License.
-// 
+//
 // The latest version of this file can be found at https://github.com/jeremyskinner/FluentValidation
 #endregion
 
@@ -32,7 +32,7 @@ namespace FluentValidation.WebApi
 
 		internal CustomizeValidatorAttribute Customizations { get; private set; }
 		internal HttpActionContext ActionContext { get; private set; }
-		
+
 		public FluentValidationModelValidator(IEnumerable<ModelValidatorProvider> validatorProviders, IValidator validator)
 			: base(validatorProviders) {
 			this._validator = validator;
@@ -42,7 +42,7 @@ namespace FluentValidation.WebApi
 			if (metadata.Model != null) {
 
 				var customizations = Customizations ?? new CustomizeValidatorAttribute();
-				
+
 				if (customizations.Skip) {
 					return Enumerable.Empty<ModelValidationResult>();
 				}
@@ -60,10 +60,10 @@ namespace FluentValidation.WebApi
 				}
 
 				var result = _validator.Validate(context);
-				
+
 				if (interceptor != null) {
 					// allow the user to provide a custom collection of failures, which could be empty.
-					// However, if they return null then use the original collection of failures. 
+					// However, if they return null then use the original collection of failures.
 					result = interceptor.AfterMvcValidation(ActionContext, context, result) ?? result;
 				}
 

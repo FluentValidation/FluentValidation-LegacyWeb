@@ -1,19 +1,19 @@
 #region License
-// Copyright (c) Jeremy Skinner (http://www.jeremyskinner.co.uk)
-// 
-// Licensed under the Apache License, Version 2.0 (the "License"); 
-// you may not use this file except in compliance with the License. 
-// You may obtain a copy of the License at 
-// 
-// http://www.apache.org/licenses/LICENSE-2.0 
-// 
-// Unless required by applicable law or agreed to in writing, software 
-// distributed under the License is distributed on an "AS IS" BASIS, 
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
-// See the License for the specific language governing permissions and 
+// Copyright (c) Jeremy Skinner (http://www.jeremyskinner.co.uk) and contributors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
 // limitations under the License.
-// 
-// The latest version of this file can be found at https://github.com/JeremySkinner/FluentValidation
+//
+// The latest version of this file can be found at https://github.com/FluentValidation/FluentValidation
 #endregion
 
 namespace FluentValidation.Mvc {
@@ -28,17 +28,17 @@ namespace FluentValidation.Mvc {
 		/// The string "default" can be used to specify those rules not in an explict ruleset.
 		/// </summary>
 		public string RuleSet { get; set; }
-		
+
 		/// <summary>
 		/// Specifies a whitelist of properties that should be validated, as a comma-separated list.
 		/// </summary>
 		public string Properties { get; set; }
-		
+
 		/// <summary>
 		/// Specifies an interceptor that can be used to customize the validation process.
 		/// </summary>
 		public Type Interceptor { get; set; }
-		
+
 		/// <summary>
 		/// Indicates whether this model should skip being validated. The default is false.
 		/// </summary>
@@ -54,9 +54,9 @@ namespace FluentValidation.Mvc {
 			// Originally I thought about storing this inside ModelMetadata.AdditionalValues.
 			// Unfortunately, DefaultModelBinder overwrites this property internally.
 			// So anything added to AdditionalValues will not be passed to the ValidatorProvider.
-			// This is a very poor design decision. 
+			// This is a very poor design decision.
 			// The only piece of information that is passed all the way down to the validator is the controller context.
-			// So we resort to storing the attribute in HttpContext.Items. 
+			// So we resort to storing the attribute in HttpContext.Items.
 			// Horrible, horrible, horrible hack. Horrible.
 			controllerContext.HttpContext.Items[key] = this;
 
