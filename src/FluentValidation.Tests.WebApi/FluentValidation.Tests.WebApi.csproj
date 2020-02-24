@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net452</TargetFramework>
+    <TargetFramework>net461</TargetFramework>
     <AssemblyName>FluentValidation.Tests.WebApi</AssemblyName>
     <RootNamespace>FluentValidation.Tests.WebApi</RootNamespace>
     <IsPackable>false</IsPackable>
@@ -32,7 +32,7 @@
     <PackageReference Include="Microsoft.Web.Infrastructure" Version="1.0.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="6.0.4" />
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="All" />
-    <PackageReference Include="FluentValidation" Version="[8.6.1,9.0.0)" />
+    <PackageReference Include="FluentValidation" Version="9.0.0-preview2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FluentValidation.WebApi\FluentValidation.WebApi.csproj" />
