@@ -9,6 +9,9 @@
     <DebugType>embedded</DebugType>
     <DocumentationFile Condition="'$(Configuration)'=='Release'">bin\$(Configuration)\$(TargetFramework)\FluentValidation.WebApi.xml</DocumentationFile>
     <PackageReleaseNotes>
+Changes in 9.0.0:
+* Final release. Compatibility with FluentValidation 9.
+
 Changes in 8.6.0:
 * AddToModelState no longer includes a dot if PropertyName is null
 
