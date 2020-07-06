@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net452</TargetFramework>
+    <TargetFramework>net461</TargetFramework>
     <AssemblyName>FluentValidation.Tests.Mvc5</AssemblyName>
     <RootNamespace>FluentValidation.Tests.Mvc5</RootNamespace>
 	<IsPackable>false</IsPackable>
@@ -26,7 +26,7 @@
 		<PackageReference Include="Microsoft.Web.Infrastructure" Version="1.0.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="6.0.3" />
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="All" />
-    <PackageReference Include="FluentValidation" Version="[8.6.1,9.0.0)" />
+    <PackageReference Include="FluentValidation" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>

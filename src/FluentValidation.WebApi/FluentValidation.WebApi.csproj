@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net45</TargetFramework>
+    <TargetFramework>net461</TargetFramework>
     <PackageId>FluentValidation.WebApi</PackageId>
     <Description>ASP.NET WebApi integration for FluentValidation</Description>
     <!-- Signing is only performed as part of the release build -->
@@ -9,6 +9,9 @@
     <DebugType>embedded</DebugType>
     <DocumentationFile Condition="'$(Configuration)'=='Release'">bin\$(Configuration)\$(TargetFramework)\FluentValidation.WebApi.xml</DocumentationFile>
     <PackageReleaseNotes>
+Changes in 9.0.0:
+* Final release. Compatibility with FluentValidation 9.
+
 Changes in 8.6.0:
 * AddToModelState no longer includes a dot if PropertyName is null
 
@@ -32,7 +35,7 @@ Changes in 7.4:
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.4" />
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="All" />
-    <PackageReference Include="FluentValidation" Version="[8.6.1,9.0.0)" />
+    <PackageReference Include="FluentValidation" Version="[9.0.0,10.0.0)" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FluentValidation.ValidatorAttribute\FluentValidation.ValidatorAttribute.csproj" />

@@ -23,7 +23,6 @@ namespace FluentValidation.Tests.WebApi {
 	using Attributes;
 	using FluentValidation.WebApi;
 	using Results;
-	using ValidationContext = FluentValidation.ValidationContext;
 	using ValidationResult = Results.ValidationResult;
 
 	[Validator(typeof(TestModel5Validator))]
@@ -214,11 +213,11 @@ namespace FluentValidation.Tests.WebApi {
 			RuleFor(x => x.Forename).NotEqual("foo");
 		}
 
-		public ValidationContext BeforeMvcValidation(HttpActionContext controllerContext, ValidationContext validationContext) {
+		public IValidationContext BeforeMvcValidation(HttpActionContext controllerContext, IValidationContext validationContext) {
 			return validationContext;
 		}
 
-		public ValidationResult AfterMvcValidation(HttpActionContext controllerContext, ValidationContext validationContext, ValidationResult result) {
+		public ValidationResult AfterMvcValidation(HttpActionContext controllerContext, IValidationContext validationContext, ValidationResult result) {
 			return new ValidationResult(); //empty errors
 		}
 	}
@@ -226,22 +225,22 @@ namespace FluentValidation.Tests.WebApi {
 	public class SimplePropertyInterceptor : IValidatorInterceptor {
 		readonly string[] properties = new[] { "Surname", "Forename" };
 
-		public ValidationContext BeforeMvcValidation(HttpActionContext cc, ValidationContext context) {
-			var newContext = context.Clone(selector: new FluentValidation.Internal.MemberNameValidatorSelector(properties));
+		public IValidationContext BeforeMvcValidation(HttpActionContext cc, IValidationContext context) {
+			var newContext = new ValidationContext<object>(context.InstanceToValidate, context.PropertyChain, new FluentValidation.Internal.MemberNameValidatorSelector(properties));
 			return newContext;
 		}
 
-		public ValidationResult AfterMvcValidation(HttpActionContext cc, ValidationContext context, ValidationResult result) {
+		public ValidationResult AfterMvcValidation(HttpActionContext cc, IValidationContext context, ValidationResult result) {
 			return result;
 		}
 	}
 
 	public class ClearErrorsInterceptor : IValidatorInterceptor {
-		public ValidationContext BeforeMvcValidation(HttpActionContext cc, ValidationContext context) {
+		public IValidationContext BeforeMvcValidation(HttpActionContext cc, IValidationContext context) {
 			return null;
 		}
 
-		public ValidationResult AfterMvcValidation(HttpActionContext cc, ValidationContext context, ValidationResult result) {
+		public ValidationResult AfterMvcValidation(HttpActionContext cc, IValidationContext context, ValidationResult result) {
 			return new ValidationResult();
 		}
 	}

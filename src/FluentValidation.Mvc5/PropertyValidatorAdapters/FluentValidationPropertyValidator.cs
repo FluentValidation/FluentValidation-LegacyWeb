@@ -16,7 +16,7 @@ namespace FluentValidation.Mvc {
 		 This is so that the validation can be left to the actual FluentValidationModelValidator.
 		 The exception to this is the Required validator - these *do* need to run standalone
 		 in order to bypass MVC's "A value is required" message which cannot be turned off.
-		 Basically, this is all just to bypass the bad design in ASP.NET MVC. Boo, hiss. 
+		 Basically, this is all just to bypass the bad design in ASP.NET MVC. Boo, hiss.
 		*/
 		protected bool ShouldValidate { get; set; }
 
@@ -25,7 +25,7 @@ namespace FluentValidation.Mvc {
 
 			// Build a new rule instead of the one passed in.
 			// We do this as the rule passed in will not have the correct properties defined for standalone validation.
-			// We also want to ensure we copy across the CustomPropertyName and RuleSet, if specified. 
+			// We also want to ensure we copy across the CustomPropertyName and RuleSet, if specified.
 			Rule = new PropertyRule(null, x => metadata.Model, null, null, metadata.ModelType, null) {
 				PropertyName = metadata.PropertyName,
 				DisplayName = rule?.DisplayName,
@@ -41,7 +41,7 @@ namespace FluentValidation.Mvc {
 					DisplayName = Rule == null ? null : Rule.DisplayName,
 				};
 
-				var fakeParentContext = new ValidationContext(container);
+				var fakeParentContext = new ValidationContext<object>(container);
 				var context = new PropertyValidatorContext(fakeParentContext, fakeRule, Metadata.PropertyName);
 				var result = Validator.Validate(context);
 
@@ -57,7 +57,7 @@ namespace FluentValidation.Mvc {
 
 		protected virtual bool ShouldGenerateClientSideRules() {
 			var ruleSetToGenerateClientSideRules = RuleSetForClientSideMessagesAttribute.GetRuleSetsForClientValidation(ControllerContext.HttpContext);
-			bool executeDefaultRule = (ruleSetToGenerateClientSideRules.Contains("default", StringComparer.OrdinalIgnoreCase) 
+			bool executeDefaultRule = (ruleSetToGenerateClientSideRules.Contains("default", StringComparer.OrdinalIgnoreCase)
 			                           && (Rule.RuleSets.Length == 0 || Rule.RuleSets.Contains("default", StringComparer.OrdinalIgnoreCase)));
 			return ruleSetToGenerateClientSideRules.Intersect(Rule.RuleSets, StringComparer.OrdinalIgnoreCase).Any() || executeDefaultRule ;
 		}
@@ -66,7 +66,7 @@ namespace FluentValidation.Mvc {
 			if (!ShouldGenerateClientSideRules()) return Enumerable.Empty<ModelClientValidationRule>();
 
 			var supportsClientValidation = Validator as IClientValidatable;
-			
+
 			if(supportsClientValidation != null) {
 				return supportsClientValidation.GetClientValidationRules(Metadata, ControllerContext);
 			}
