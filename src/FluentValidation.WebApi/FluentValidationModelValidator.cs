@@ -49,7 +49,7 @@ namespace FluentValidation.WebApi
 
 				var selector = customizations.ToValidatorSelector();
 				var interceptor = customizations.GetInterceptor() ?? (_validator as IValidatorInterceptor);
-				var context = new FluentValidation.ValidationContext(metadata.Model, new FluentValidation.Internal.PropertyChain(), selector);
+				IValidationContext context = new FluentValidation.ValidationContext<object>(metadata.Model, new FluentValidation.Internal.PropertyChain(), selector);
 				context.RootContextData["InvokedByWebApi"] = true;
 
 

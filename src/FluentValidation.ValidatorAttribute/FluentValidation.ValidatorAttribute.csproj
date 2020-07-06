@@ -12,5 +12,5 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.0" PrivateAssets="All" />
-    <PackageReference Include="FluentValidation" Version="[9.0.0-preview2,10.0.0)" />  </ItemGroup>
+    <PackageReference Include="FluentValidation" Version="[9.0.0,10.0.0)" />  </ItemGroup>
 </Project>

@@ -34,7 +34,7 @@ namespace FluentValidation.WebApi {
 		/// <param name="actionContext">Controller Context</param>
 		/// <param name="validationContext">Validation Context</param>
 		/// <returns>Validation Context</returns>
-		ValidationContext BeforeMvcValidation(HttpActionContext actionContext, ValidationContext validationContext);
+		IValidationContext BeforeMvcValidation(HttpActionContext actionContext, IValidationContext validationContext);
 
 		/// <summary>
 		/// Invoked after WebApi validation takes place which allows the result to be customized.
@@ -44,6 +44,6 @@ namespace FluentValidation.WebApi {
 		/// <param name="validationContext">Validation Context</param>
 		/// <param name="result">The result of validation.</param>
 		/// <returns>Validation Context</returns>
-		ValidationResult AfterMvcValidation(HttpActionContext actionContext, ValidationContext validationContext, ValidationResult result);
+		ValidationResult AfterMvcValidation(HttpActionContext actionContext, IValidationContext validationContext, ValidationResult result);
 	}
 }

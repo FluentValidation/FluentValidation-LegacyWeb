@@ -16,8 +16,8 @@ namespace FluentValidation.Mvc {
 		public FluentValidationModelValidator(ModelMetadata metadata, ControllerContext controllerContext, IValidator validator)
 			: base(metadata, controllerContext) {
 			_validator = validator;
-			
-			_customizations = CustomizeValidatorAttribute.GetFromControllerContext(controllerContext) 
+
+			_customizations = CustomizeValidatorAttribute.GetFromControllerContext(controllerContext)
 				?? new CustomizeValidatorAttribute();
 		}
 
@@ -25,7 +25,7 @@ namespace FluentValidation.Mvc {
 			if (Metadata.Model != null && !_customizations.Skip) {
 				var selector = _customizations.ToValidatorSelector();
 				var interceptor = _customizations.GetInterceptor() ?? (_validator as IValidatorInterceptor);
-				var context = new ValidationContext(Metadata.Model, new PropertyChain(), selector);
+				IValidationContext context = new ValidationContext<object>(Metadata.Model, new PropertyChain(), selector);
 				context.RootContextData["InvokedByMvc"] = true;
 
 				if(interceptor != null) {
@@ -38,7 +38,7 @@ namespace FluentValidation.Mvc {
 
 				if(interceptor != null) {
 					// allow the user to provide a custom collection of failures, which could be empty.
-					// However, if they return null then use the original collection of failures. 
+					// However, if they return null then use the original collection of failures.
 					result = interceptor.AfterMvcValidation(ControllerContext, context, result) ?? result;
 				}
 

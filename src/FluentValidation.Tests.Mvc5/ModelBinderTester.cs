@@ -31,7 +31,6 @@ namespace FluentValidation.Tests.Mvc5 {
 	using Moq;
 	using Mvc;
 	using Xunit;
-	using ValidationContext = FluentValidation.ValidationContext;
 	using ValidationResult = Results.ValidationResult;
 
 	public class ModelBinderTester : IDisposable {
@@ -562,22 +561,22 @@ namespace FluentValidation.Tests.Mvc5 {
 		private class SimplePropertyInterceptor : IValidatorInterceptor {
 			readonly string[] properties = new[] { "Surname", "Forename" };
 
-			public ValidationContext BeforeMvcValidation(ControllerContext cc, ValidationContext context) {
-				var newContext = context.Clone(selector: new MemberNameValidatorSelector(properties));
+			public IValidationContext BeforeMvcValidation(ControllerContext cc, IValidationContext context) {
+				var newContext = new ValidationContext<object>(context.InstanceToValidate, context.PropertyChain, new FluentValidation.Internal.MemberNameValidatorSelector(properties));
 				return newContext;
 			}
 
-			public ValidationResult AfterMvcValidation(ControllerContext cc, ValidationContext context, ValidationResult result) {
+			public ValidationResult AfterMvcValidation(ControllerContext cc, IValidationContext context, ValidationResult result) {
 				return result;
 			}
 		}
 
 		private class ClearErrorsInterceptor : IValidatorInterceptor {
-			public ValidationContext BeforeMvcValidation(ControllerContext cc, ValidationContext context) {
+			public IValidationContext BeforeMvcValidation(ControllerContext cc, IValidationContext context) {
 				return null;
 			}
 
-			public ValidationResult AfterMvcValidation(ControllerContext cc, ValidationContext context, ValidationResult result) {
+			public ValidationResult AfterMvcValidation(ControllerContext cc, IValidationContext context, ValidationResult result) {
 				return new ValidationResult();
 			}
 		}
@@ -596,11 +595,11 @@ namespace FluentValidation.Tests.Mvc5 {
 				RuleFor(x => x.Forename).NotEqual("foo");
 			}
 
-			public ValidationContext BeforeMvcValidation(ControllerContext controllerContext, ValidationContext validationContext) {
-				return validationContext;
+			public IValidationContext BeforeMvcValidation(ControllerContext controllerContext, IValidationContext IValidationContext) {
+				return IValidationContext;
 			}
 
-			public ValidationResult AfterMvcValidation(ControllerContext controllerContext, ValidationContext validationContext, ValidationResult result) {
+			public ValidationResult AfterMvcValidation(ControllerContext controllerContext, IValidationContext IValidationContext, ValidationResult result) {
 				return new ValidationResult(); //empty errors
 			}
 		}
