@@ -6,6 +6,8 @@ This repository contains the legacy/deprecated web project integration component
 - MVC 5
 - WebApi 2
 
+** Integration with MVC5 / WebApi is no longer supported. The code remains here for reference purposes only **
+
 [Full Documentation](https://fluentvalidation.net)
 [Main repository](https://github.com/JeremySkinner/FluentValidation)
 
