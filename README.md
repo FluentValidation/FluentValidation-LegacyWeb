@@ -11,7 +11,6 @@ This repository contains the legacy/deprecated web project integration component
 [Full Documentation](https://fluentvalidation.net)
 [Main repository](https://github.com/JeremySkinner/FluentValidation)
 
-[![Build Status](https://dev.azure.com/jeremy0621/FluentValidation/_apis/build/status/FluentValidation.FluentValidation-LegacyWeb?branchName=master)](https://dev.azure.com/jeremy0621/FluentValidation/_build/latest?definitionId=6&branchName=master)
 
 |         |       |       |
 | ------- | ----- | ----- |
